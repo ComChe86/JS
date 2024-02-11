@@ -1,4 +1,4 @@
-Задача 1
+//Задача 1 з використанням "for"
 
 function drawTriangle(height, symbol) {
     for (let i = 1; i <= height; i++) {
@@ -12,18 +12,18 @@ function drawTriangle(height, symbol) {
 
 drawTriangle(5, '*');
 
-Задача 2
+//Задача 1  з використанням "while"
 
-function pow(x, y) {
-    let result = 1;
+function drawTriangle(height, symbol) {
+    let i = 1;
 
-    for (let i = 0; i < y; i++) {
-        result *= x;
+    while (i <= height) {
+        let amount = symbol.repeat(i);
+        console.log(amount);
+        i++;
     }
-
-    return result;
 }
 
+drawTriangle(3, '*');
 
-let result = pow(3, 3);
-console.log(result); 
+
