@@ -1,3 +1,4 @@
+// Задача 2
 function pow(x, y) {
     let result = 1;
 
