@@ -16,14 +16,18 @@ drawTriangle(5, '*');
 
 function drawTriangle(height, symbol) {
     let i = 1;
-
     while (i <= height) {
-        let amount = symbol.repeat(i);
+        let amount = '';
+        let a = 1;
+        while (a <= i) {
+            amount += symbol;
+            a++;
+        }
         console.log(amount);
         i++;
     }
 }
 
-drawTriangle(3, '*');
+drawTriangle(5, '*');
 
 
