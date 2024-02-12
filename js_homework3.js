@@ -18,7 +18,7 @@ function drawTriangle(height, symbol) {
     let i = 1;
 
     while (i <= height) {
-        let amount = symbol.repeat(i);
+        let amount = symbol.amount(i);
         console.log(amount);
         i++;
     }
