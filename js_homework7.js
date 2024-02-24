@@ -1,43 +1,47 @@
-
 var arr = [
     {
-        userName:"Test",
-        lastName:"Test",
-        email:"test.test@gmail.com"
+        userName: "Test",
+        lastName: "Test",
+        email: "test.test@gmail.com"
     },
     {
-        userName:"Dmitro",
-        lastName:"Porohov",
-        email:"dmitro.porohov@yahoo.com"
+        userName: "Dmitro",
+        lastName: "Porohov",
+        email: "dmitro.porohov@yahoo.com"
     },
     {
-        userName:"Andrii",
-        lastName:"",
-        email:"andrii@mail.ru" // Нам такі не підходять
+        userName: "Andrii",
+        lastName: "",
+        email: "andriiанатол@gmail.com"
+    },
+    {
+        userName: "Archi",
+        lastName: "Petrovich",
+        email: "archi@gmailyahoo.com"
     },
 ];
 
+// Перевіряю валідацію email
+const emailValid = /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)?@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/;
 
-var validEmail = arr.filter(necessary => /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)?@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/.
-test(necessary.email) && (necessary.email.indexOf('gmail.com') !== -1 || necessary.email.indexOf('yahoo.com') !== -1));
+// Регулярний вираз для перевірки домену
+const validDom = /@(gmail\.com|yahoo\.com)$/;
 
-console.log(validEmail);
+// Валідація до "@"
+const beforeAtValid = /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)?/;
 
-//*/(^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)?@:) В цій частині перевіряю, чи починається рядок латинською буквою чи цифрою, і може містити одне або більше аналогічних символів. Потім слідує @.
+let trustEmails = arr.filter(entry => {
+    // Перевіряю валідність email і присутність "gmail.com" або "yahoo.com"
+    const isValidEmail = emailValid.test(entry.email) && validDom.test(entry.email);
 
-//*[a-zA-Z0-9]+\.: В цій частині перевіряю доменну частину email, чи містить вона латинські букви чи цифри.
+    // Перевірка частини email до "@"
+    const isBeforeAtValid = beforeAtValid.test(entry.email);
 
-//*[a-zA-Z0-9]+$: В цій частині перевіряю, чи наступні символи містять латинські букви чи цифри та закінчуються нашим рядком.
+    // Результат перевірок
+    return isValidEmail && isBeforeAtValid;
+});
 
+// Масив з довіреними адресами
+let trustEmailValid = trustEmails.map(entry => entry.email);
 
-
-// Додатково перевіряю валідацію після @
-var email1 = "Andrii@gmail.com";
-var email2 = "Andrii@gmailcom"; // Помилка
-
-var valid = /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)?@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/;
-
-console.log(email1 + ': ' + valid.test(email1));
-console.log(email2 + ': ' + valid.test(email2)); // буде false через відсутність ".";
-
-
+console.log(trustEmailValid);
