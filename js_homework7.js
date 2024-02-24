@@ -38,6 +38,6 @@ var email2 = "Andrii@gmailcom"; // Помилка
 var valid = /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)?@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/;
 
 console.log(email1 + ': ' + valid.test(email1));
-console.log(email2 + ': ' + valid.test(email2)); // буде false через відсутність "."
+console.log(email2 + ': ' + valid.test(email2)); // буде false через відсутність ".";
 
 
